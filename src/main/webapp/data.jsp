@@ -15,9 +15,9 @@ String MYSQL_DATABASE_NAME = "Employees";
         Class.forName("com.mysql.jdbc.Driver");
         }
         catch(ClassNotFoundException e){out.println("not found");}
-        
+        System.out.println("test");
         try{
-        url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
+        String url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
         con=DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
         sql=con.createStatement();
         rs=sql.executeQuery("select * from Employees");
