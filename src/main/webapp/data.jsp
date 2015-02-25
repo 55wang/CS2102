@@ -1,40 +1,28 @@
-
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
- 
- <html>
- <head>
- <title>SELECT Operation</title>
- </head>
- <body>
-  
-  <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-       url="jdbc:mysql://127.5.234.2:3306"
-            user="adminTEEydtv"  password="6HSRrUaA3gxr"/>
-             
-             <sql:query dataSource="${snapshot}" var="result">
-             SELECT * from Employees;
-             </sql:query>
-              
-              <table border="1" width="100%">
-              <tr>
-                 <th>Emp ID</th>
-                    <th>First Name</th>
-                       <th>Last Name</th>
-                          <th>Age</th>
-                          </tr>
-                          <c:forEach var="row" items="${result.rows}">
-                          <tr>
-                             <td><c:out value="${row.id}"/></td>
-                                <td><c:out value="${row.first}"/></td>
-                                   <td><c:out value="${row.last}"/></td>
-                                      <td><c:out
-                                      value="${row.age}"/></td>
-                                      </tr>
-                                      </c:forEach>
-                                      </table>
-                                       
-                                       </body>
-                                       </html>
+<%@ page contentType="text/html;charset=GB2312"%>
+<%@ page import="java.sql.*"%>
+<html>
+    <body>
+        <%
+        Connection con;
+        Statement sql;
+        ResultSet rs;
+        try{
+        Class.forName("com.mysql.jdbc.Driver");
+        }
+        catch(ClassNotFoundException e){out.println("not found");}
+        out.println("mysql的jdbc找到了");
+        try{
+        con=DriverManager.getConnection("jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/Employees","adminTEEydtv","6HSRrUaA3gxr");
+        sql=con.createStatement();
+        rs=sql.executeQuery("select * from Employees");
+        out.println("<hr/>");
+      while(rs.next())
+      {
+       out.println(rs.getString("name"));
+      }
+      con.close();
+        }
+        catch(SQLException e1){out.println("SQL异常");}
+        %>
+    </body>
+</html>
