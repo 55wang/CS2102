@@ -1,22 +1,18 @@
-<%@page language="java" contentType="text/html"%>
 <html>
-<head><title>Hello World dynamic HTML</title></head>
+<head>
+    <title>Quick Servlet Demo</title>
+</head>
 <body>
-Hello World!
-<%
-out.println("<br/>Your IP address is " + request.getRemoteAddr());
-String userAgent = request.getHeader("user-agent");
-String browser = "unknown";
-out.print("<br/>and your browser is ");
-if (userAgent != null) {
-    if (userAgent.indexOf("MSIE") > -1) {
-        browser = "MS Internet Explorer";
-    }
-    else if (userAgent.indexOf("Firefox") > -1) {
-        browser = "Mozilla Firefox";
-    }
-}
-out.println(browser);
-%>
+    <a href="/QuickServlet">Click here to send GET request</a>
+     
+    <br/><br/>
+     
+    <form action="QuickServlet" method="post">
+        Width: <input type="text" size="5" name="width"/>
+        &nbsp;&nbsp;
+        Height <input type="text" size="5" name="height"/>
+        &nbsp;&nbsp;
+        <input type="submit" value="Calculate" />
+    </form>
 </body>
 </html>
