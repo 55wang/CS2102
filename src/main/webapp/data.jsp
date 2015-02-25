@@ -15,18 +15,17 @@
   Class.forName("com.mysql.jdbc.Driver");
 }
 catch(ClassNotFoundException e){out.println("not found");}
-out.println("test");
 
 try{
 String url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
 out.println(url);
 out.println(MYSQL_USERNAME+" "+MYSQL_PASSWORD+" "+MYSQL_DATABASE_NAME);
 con=DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
-out.println("test1");
+
 sql=con.createStatement();
-out.println("test2");
+
 rs=sql.executeQuery("select * from Employees");
-out.println("test3");
+
 while(rs.next())
 {
  out.println(rs.getString("age"));
