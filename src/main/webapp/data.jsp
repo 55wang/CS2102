@@ -12,7 +12,7 @@
         catch(ClassNotFoundException e){out.println("not found");}
         
         try{
-        con=DriverManager.getConnection("jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/Employees","adminTEEydtv","6HSRrUaA3gxr");
+        con=DriverManager.getConnection("jdbc:mysql://127.5.234.2:3306/Employees","adminTEEydtv","6HSRrUaA3gxr");
         sql=con.createStatement();
         rs=sql.executeQuery("select * from Employees");
         System.out.println("<hr/>");
