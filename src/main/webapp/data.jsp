@@ -3,6 +3,11 @@
 <html>
     <body>
         <%
+String MYSQL_USERNAME = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+String MYSQL_PASSWORD = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+String MYSQL_DATABASE_HOST = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+String MYSQL_DATABASE_PORT = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+String MYSQL_DATABASE_NAME = "Employees";
         Connection con;
         Statement sql;
         ResultSet rs;
@@ -12,7 +17,8 @@
         catch(ClassNotFoundException e){out.println("not found");}
         
         try{
-        con=DriverManager.getConnection("jdbc:mysql://127.5.234.2:3306/Employees","adminTEEydtv","6HSRrUaA3gxr");
+        url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
+        con=DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
         sql=con.createStatement();
         rs=sql.executeQuery("select * from Employees");
         System.out.println("<hr/>");
