@@ -7,7 +7,7 @@
   String MYSQL_PASSWORD = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
   String MYSQL_DATABASE_HOST = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
   String MYSQL_DATABASE_PORT = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-  String MYSQL_DATABASE_NAME = "Employees";
+  String MYSQL_DATABASE_NAME = "cs2102";
   Connection con;
   Statement sql;
   ResultSet rs;
