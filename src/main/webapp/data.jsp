@@ -33,7 +33,7 @@ while(rs.next())
 }
 con.close();
 }
-catch(SQLException e1){out.println("SQL expception");}
+catch(SQLException e1){out.println("SQL expception" + e1);}
 %>
 </body>
 </html>
